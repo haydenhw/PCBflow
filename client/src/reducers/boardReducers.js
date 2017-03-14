@@ -50,10 +50,9 @@ export const anchorPositions = (state=defaultAnchorPositions, action) => {
     case actions.UPDATE_ANCHOR_POSITIONS:
       return action.positions;
       break;
-      
-      case actions.FECTCH_PROJECT_BY_ID_SUCCESS:
-        return defaultAnchorPositions;
-        break;
+    case actions.FECTCH_PROJECT_BY_ID_SUCCESS:
+      return defaultAnchorPositions;
+      break;
     default:
       return state;
   }

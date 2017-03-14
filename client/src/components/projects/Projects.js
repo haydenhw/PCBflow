@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Router, Link, hashHistory } from 'react-router';
 import { connect } from 'react-redux';
-import ProjectsList from './ProjectsList'
+import ProjectsList from 'components/projects/ProjectsList';
+
+// import ProjectsList from './ProjectsList'
 import ProjectsSubmitForm from './ProjectsSubmitForm'
 import * as actions from '../../actions/indexActions';
 import store from '../../store';

@@ -23,11 +23,13 @@ class DesignToolStage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(this.props, nextProps)
     if (nextProps.shouldUpdateThumbnail && !this.props.shouldUpdateThumbnail) {
       this.updateThumbnail();
       this.props.toggleShouldUpadateThumbnail();
     }
   }
+  
 
   deleteModule() {
     store.dispatch(actions.deleteSelectedModule(this.props.selectedModuleIndex));
@@ -45,7 +47,7 @@ class DesignToolStage extends Component {
       unhideDocumentation,
       shouldHideContextMenu,
      } = this.props;
-
+     
     const contextMenuClass = shouldHideContextMenu ? 'hideContextMenu' : 'react-contextmenu';
 
     const board = (
@@ -55,7 +57,7 @@ class DesignToolStage extends Component {
         unhideDocumentation={unhideDocumentation}
       />
     );
-
+    
     return (
       <div>
         <ContextMenuTrigger
@@ -71,7 +73,7 @@ class DesignToolStage extends Component {
             >
               <Grid gridWidth={5000} cellWidth={20} />
               {shouldRenderBoard ? board : <Layer />}
-              {isMouseDownOnIcon ? <Layer>{ draggingModule }</Layer> : <Layer /> }
+              {/* {isMouseDownOnIcon ? <Layer>{ draggingModule }</Layer> : <Layer /> } */}
             </Stage>
           </div>
         </ContextMenuTrigger>

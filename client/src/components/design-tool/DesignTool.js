@@ -202,7 +202,7 @@ let DesignTool = class extends Component {
   }
 
   handleMouseMove(evt) {
-    if (this.state.isDraggingToBoard) {
+    if (true || this.state.isDraggingToBoard) {
       const stageOffsetX = Number(this.stageContainer.getBoundingClientRect().left);
       const stageOffsetY = Number(this.stageContainer.getBoundingClientRect().top);
       const x = Number(evt.clientX) - stageOffsetX;
@@ -301,10 +301,12 @@ let DesignTool = class extends Component {
       shouldRenderDocumentation,
       shouldRenderDocumentationButton,
       shouldHideContextMenu,
+      isDraggingToBoard
     } = this.state;
     const { height, width } = draggingModuleData;
-
-    const draggingModule = (
+    
+  
+    const preCloneModule = (
       <Module
         x={x - (width / 2)}
         y={y - (height / 2)}
@@ -318,9 +320,12 @@ let DesignTool = class extends Component {
         imageHeight={draggingModuleData.imageHeight}
         imageSrc={draggingModuleData.imageSrc}
         imageNode={draggingModuleData.imageNode}
-        isDraggingToBoard
+
       />
     );
+    
+    const draggingModule = React.cloneElement(preCloneModule);
+    
 
     let sideBar = (<SideBar toggleDraggingToBoard={this.toggleDraggingToBoard} />);
     sideBar = this.state.isDraggingToBoard
@@ -359,13 +364,13 @@ let DesignTool = class extends Component {
           <div ref={node => this.stageContainer = node}>
             {sideBar}
             <DesignToolStage
+              draggingModule={draggingModule}
+              shouldRenderBoard={currentProjectName}
+              shouldHideContextMenu={shouldHideContextMenu}
+              shouldUpdateThumbnail={shouldUpdateThumbnail}
               updateState={this.updateState.bind(this)}
               rotate={this.rotate.bind(this)}
               toggleShouldUpadateThumbnail={this.toggleShouldUpadateThumbnail.bind(this)}
-              shouldRenderBoard={currentProjectName}
-              shouldUpdateThumbnail={shouldUpdateThumbnail}
-              draggingModule={draggingModule}
-              shouldHideContextMenu={shouldHideContextMenu}
               hideDocumentation={this.hideDocumentation.bind(this)}
               unhideDocumentation={this.unhideDocumentation.bind(this)}
             />
@@ -409,7 +414,7 @@ DesignTool.propTypes = {
   boardSpecs: PropTypes.object.isRequired,
   selectedModuleProps: PropTypes.object.isRequired,
   anchorPositions: PropTypes.object.isRequired,
-  hasUnsavedChanges: PropTypes.object.isRequired,
+  hasUnsavedChanges: PropTypes.object,
   route: PropTypes.object.isRequired,
   router: PropTypes.object.isRequired,
   params: PropTypes.object.isRequired,

@@ -38,7 +38,6 @@ const projectSchema = mongoose.Schema({
     price: Number,
     id: String,
     dependencies: [String]
-
   }],
   moduleBank: [{
     height: Number,

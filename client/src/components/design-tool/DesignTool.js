@@ -187,8 +187,9 @@ let DesignTool = class extends Component {
     if (isNewModuleOutOfBounds && this.state.isDraggingToBoard) {
       store.dispatch(actions.pushToCurrentProjectModules(newModule));
     }
-
-    this.timeOut = setTimeout(() => store.dispatch(actions.mouseDownOnIcon(false)), 1);
+    
+    store.dispatch(actions.mouseDownOnIcon(false));
+    //this.timeOut = setTimeout(() => store.dispatch(actions.mouseDownOnIcon(false)), 1);
     this.setState({ isDraggingToBoard: false });
   }
 

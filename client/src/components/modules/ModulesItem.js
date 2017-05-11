@@ -70,7 +70,8 @@ export default class ModulesItem extends Component {
     this.refs.moduleGroup.attrs.highlightRuleBreakingModules = this.highlightRuleBreakingModules;
     this.setImage();
     this.setDefaultStroke();
-    setTimeout(() => this.highlightRuleBreakingModules(), 1);
+    this.highlightRuleBreakingModules()
+    // setTimeout(() => this.highlightRuleBreakingModules(), 1);
   }
 
   componentDidUpdate(prevProps, prevState) {

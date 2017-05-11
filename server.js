@@ -6,6 +6,8 @@ const app = express();
 const { PORT, DATABASE_URL } = require('./config');
 const { Modules, Projects } = require('./models');
 const projectRouter = require('./projectRouter');
+const demoProject = require('./demoProject') 
+
 mongoose.Promise = global.Promise;
 
 //app.set('port', (process.env.PORT || 3001));
@@ -54,6 +56,22 @@ app.post('/test', (req, res) => {
         res.status(500).json({message: 'Internal server error'});
     });
 });
+
+const seedSampleData = () => {
+  return Projects.insertMany(demoProject);
+}
+
+/*(function resetDb() {
+  return new Promise((resolve, reject) => {
+    console.warn('Resetting database');
+    mongoose.connection.dropDatabase()
+      .then(result => { 
+        seedSampleData(); 
+        resolve(result)
+      })
+      .catch(err => reject(err));
+  });
+})();*/
 
 function tearDownDb() {
   return new Promise((resolve, reject) => {

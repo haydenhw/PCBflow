@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter, hashHistory } from 'react-router';
 import FontAwesome from 'react-fontawesome';
+import Tour from "react-user-tour";
 
 import * as actions from 'actions/indexActions';
 import store from 'reduxFiles/store';
@@ -41,6 +42,8 @@ let DesignTool = class extends Component {
       shouldRenderDocumentationButton: true,
       shouldHideContextMenu: false,
       image: null,
+      isTourActive: false,
+			tourStep: 1
     };
 
     this.toggleDraggingToBoard = this.toggleDraggingToBoard.bind(this);
@@ -150,6 +153,10 @@ let DesignTool = class extends Component {
 
     this.setRouteHook();
     this.addHanlders();
+    
+    this.setState({
+			isTourActive: true
+		});
   }
 
   componentWillUnmount() {
@@ -305,6 +312,18 @@ let DesignTool = class extends Component {
   }
 
   render() {
+    const tourTitleStyle = {
+			fontWeight: 700,
+			fontSize: 16,
+			paddingTop: 10,
+			paddingBottom: 10,
+			paddingLeft: 10
+		};
+
+		const tourMessageStyle = {
+			fontSize: 12,
+			paddingLeft: 10
+		};
     const {
       currentProjectName,
       currentProjectId,
@@ -375,6 +394,22 @@ let DesignTool = class extends Component {
 
     return (
       <div>
+        
+        <div
+          style={{width: 200, height: 25, left: 0, top: 0, position: "absolute", backgroundColor: "blanchedalmond", textAlign: "center", paddingTop: 10, fontWeight: 700, cursor: "pointer"}}
+          onClick={() => this.setState({isTourActive: true, tourStep: 1})}
+          >
+            Restart Tour
+          </div>
+          <div
+            style={{width: 200, height: 100, left: "60%", top: 0, position: "absolute", backgroundColor: "red"}}
+            className="stop-1"
+          />
+          <div
+            style={{width: 100, height: 200, left: 0, top: "40%", position: "absolute", backgroundColor: "blue"}}
+            className="stop-2"
+          />
+          
         <TopNavbar
           projectName={currentProjectName}
           handleNameChange={DesignTool.handleNameChange.bind(null, currentProjectId)}
@@ -407,6 +442,56 @@ let DesignTool = class extends Component {
         />
         {shouldRenderDocumentation && <DocumentationCard />}
         {shouldRenderDocumentationButton && infoButton}
+        
+        <div style={{position: "absolute", top: 0}}>
+          <Tour
+            active={this.state.isTourActive}
+            step={this.state.tourStep}
+            onNext={(step) => this.setState({tourStep: step})}
+            onBack={(step) => this.setState({tourStep: step})}
+            onCancel={() => this.setState({isTourActive: false})}
+            steps={[
+              {
+                step: 1,
+                selector: ".stop-1",
+                title: <div style={tourTitleStyle}>React User Tour</div>,
+                body: <div style={tourMessageStyle}>Provide a simple guided tour around a website utilizing css selectors.</div>,
+                position: "bottom"
+              },
+              {
+                step: 2,
+                selector: ".stop-2",
+                title: <div style={tourTitleStyle}>Simply</div>,
+                body: <div style={tourMessageStyle}>pass in a class class prefixe with `.` or id prefixed with `#`</div>
+              },
+              {
+                step: 3,
+                selector: ".stop-3",
+                title: <div style={tourTitleStyle}>And</div>,
+                body: <div style={tourMessageStyle}>React User Tour will figure out where to position the element.</div>
+              },
+              {
+                step: 4,
+                selector: ".stop-4",
+                title: <div style={tourTitleStyle}>Wow</div>,
+                body: <div style={tourMessageStyle}>That sounds amazing, can it be true?</div>
+              },
+              {
+                step: 5,
+                selector: ".stop-5",
+                title: <div style={tourTitleStyle}>Yes</div>,
+                body: <div style={tourMessageStyle}>and guess what?</div>
+              },
+              {
+                step: 6,
+                selector: ".stop-6",
+                title: <div style={tourTitleStyle}>What?</div>,
+                body: <div style={tourMessageStyle}>we'll even take care of scrolling to elements outside of the viewbox. Enjoy!</div>
+              }
+            ]}
+          />
+        </div>
+        
       </div>
     );
   }

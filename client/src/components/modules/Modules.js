@@ -46,9 +46,6 @@ class Modules extends Component {
     store.dispatch(actions.updateProjectPrice(totalPriceString));
   }
   
-
-
-  
   updateDisplayedDependencies() {
     
     function areDependenciesMet(dependencies, metDependencies) {

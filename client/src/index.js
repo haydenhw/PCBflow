@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 
+
 import store from 'reduxFiles/store';
 
 import DesignTool from 'components/design-tool/DesignTool';
@@ -11,6 +12,9 @@ import LandingPage from 'components/landing-page/LandingPage';
 
 import './index.css';
 import './reset.css';
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+try { injectTapEventPlugin(); } catch (e) { /* Do nothing, just preventing error*/ }
 
 
 ReactDOM.render(

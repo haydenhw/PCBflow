@@ -7,21 +7,13 @@ import SideBarDependencyMessage from './SideBarDependencyMessage';
 
 import './side-bar-styles/SideBar.css';
 
-export default function SideBar(props) {
-  const { showAll, updateClientPosition } = props
-  const { mode, moduleName, dependencies } = props.iconVisibityData
-  
-  const style = {
-    height: '100% !important',
-    width: '200px',
-    position: 'fixed',
-    zIndex: '1',
-    left: '0px',
-    verticalAlign: 'top',
-  };
-  
-  const renderDependencyMessage = () => {
+export default class SideBar extends Component {
+  renderDependencyMessage() {
+    const { showAll, updateClientPosition } = this.props;
+    const { mode, moduleName, dependencies } = this.props.iconVisibityData;
+    
     if ((mode === 'DEPENDENCY') && (dependencies.length > 0)) {
+      console.log(mode, dependencies.length)
       return (
         <SideBarDependencyMessage 
           moduleName={moduleName}
@@ -31,19 +23,36 @@ export default function SideBar(props) {
     }
     return null;
   }
+  componentDidMount() {
+    this.depencyMessage = this.renderDependencyMessage();
+  }
   
-  return (
-    <div className="sideBar" style={style}>
-      {renderDependencyMessage()}
-      <div className="module-container">
-        <SideBarIconList
-          toggleDraggingToBoard={props.toggleDraggingToBoard}
-          toggleIsClicked={props.toggleIsClicked}
-          onBoardModulesLength={props.onBoardModulesLength}
-          updateClientPosition={updateClientPosition}
-        />
+  render() {
+    const { showAll, updateClientPosition } = this.props;
+    const { mode, moduleName, dependencies } = this.props.iconVisibityData;
+    
+    const style = {
+      height: '100% !important',
+      width: '200px',
+      position: 'fixed',
+      zIndex: '1',
+      left: '0px',
+      verticalAlign: 'top',
+    };
+    
+    return (
+      <div className="sideBar" style={style}>
+        {this.depencyMessage}
+        <div className="module-container">
+          <SideBarIconList
+            toggleDraggingToBoard={this.props.toggleDraggingToBoard}
+            toggleIsClicked={this.props.toggleIsClicked}
+            onBoardModulesLength={this.props.onBoardModulesLength}
+            updateClientPosition={updateClientPosition}
+          />
+        </div>
+        <DimensionForm />
       </div>
-      <DimensionForm />
-    </div>
-  );
+    );
+  }
 }

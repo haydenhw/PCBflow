@@ -60,16 +60,16 @@
   "dependencies": {
     "dotenv": "2.0.0",
     "interact.js": "^1.2.8",
-    "prop-types": "^15.5.8",
     "konva": "^1.4.0",
+    "prop-types": "^15.5.8",
     "react": "^15.6.2",
     "react-contextmenu": "^2.5.1",
     "react-dom": "^15.6.2",
     "react-edit-inline": "^1.0.8",
     "react-fontawesome": "^1.6.1",
     "react-interactjs": "^0.1.2",
-    "react-konva": "^1.1.1",
     "react-joyride": "^1.10.1",
+    "react-konva": "1.1.1",
     "react-redux": "^5.0.3",
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
@@ -82,7 +82,7 @@
     "build": "node scripts/build.js",
     "clean": "rimraf ./build/static/js/*",
     "test:browser": "npm run clean && webpack-dev-server -d --config ./config/webpack.config.test --progress mocha!./test/tests.mocha.js --output-filename testBundle.js --colors",
-    "lint": "eslint --ext .js --ext .jsx src/components/design-tool/DesignTool.js || exit 0",
+    "lint": "eslint --ext .js --ext .jsx src/components/|| exit 0",
     "lint:fix": "eslint --fix --ext .js --ext .jsx src/ || exit 0"
   },
   "jest": {

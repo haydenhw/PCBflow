@@ -22,29 +22,29 @@ class DesignToolStage extends Component {
     super();
     this.deleteModule = this.deleteModule.bind(this);
   }
-  
+
   updateThumbnail() {
     const boardLayer = this.refs.stage.getStage().get('.boardLayer')[0];
     const thumbnail = generateThumbnail(boardLayer);
-    
+
     store.dispatch(actions.updateBoardThumbnail(thumbnail));
   }
-  
+
   downloadPDF() {
     const { currentProjectName } = this.props;
     const boardLayer = this.refs.stage.getStage().get('.boardLayer')[0];
     const croppedStage = getCroppedStage(boardLayer);
     const imageDataURL = croppedStage.node.toDataURL("image/jpeg", 1.0);
-    const footerText = `${currentProjectName} created ${getTimeDateStamp()}` 
-    
+    const footerText = `${currentProjectName} created ${getTimeDateStamp()}`
+
     const pxPerMillimeter = 0.2458333;
-    const imageOffsetX = (1125 
+    const imageOffsetX = (1125
       - croppedStage.width) / 2 * pxPerMillimeter * 1.02525;
     const imageOffsetY = (795 - croppedStage.height) / 2 * pxPerMillimeter * 0.995;
     const textOffsetY = 795 * pxPerMillimeter + 5;
-    
+
     const pdf = new jsPDF("landscape");
-    pdf.setFontSize(8), 
+    pdf.setFontSize(8),
     pdf.text(footerText, 10 , textOffsetY)
     pdf.addImage(imageDataURL, 'JPEG', imageOffsetX, imageOffsetY);
     pdf.save('test.pdf');
@@ -52,12 +52,12 @@ class DesignToolStage extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { toggleShouldUpadateThumbnail , toggleShouldExportPDF } = this.props;
-  
+
     if (nextProps.shouldUpdateThumbnail && !this.props.shouldUpdateThumbnail) {
       this.updateThumbnail();
       toggleShouldUpadateThumbnail();
     }
-    
+
     if (nextProps.shouldExportPDF && !this.props.shouldExportPDF) {
       this.downloadPDF()
       toggleShouldExportPDF();
@@ -96,13 +96,15 @@ class DesignToolStage extends Component {
 
     return (
       <div>
+        {/* <div id="container" style={{display: "none"}}/> */}
         <ContextMenuTrigger
           id={'SIMPLE'}
           name={'rect'}
           disable={isMouseDown || !isMouseOverModule}
         >
-          <div>
+          <div ref={(node) => { this.container = node; }}>
             <Stage
+              container={this.container}
               ref="stage"
               width={2000}
               height={1000}

@@ -49,19 +49,19 @@ export default class Anchor extends Component {
       case 'topLeft':
         topRight.setY(anchorY);
         bottomLeft.setX(anchorX);
-        break;
+        
       case 'topRight':
         topLeft.setY(anchorY);
         bottomRight.setX(anchorX);
-        break;
+        
       case 'bottomRight':
         bottomLeft.setY(anchorY);
         topRight.setX(anchorX);
-        break;
+        
       case 'bottomLeft':
         bottomRight.setY(anchorY);
         topLeft.setX(anchorX);
-        break;
+        
     }
 
     const anchorPositions = {

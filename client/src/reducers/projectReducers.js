@@ -40,25 +40,25 @@ export const currentProjectInfo = (state = defaultProjectInfo, action) => {
         name: action.project.name,
         id: action.project._id,
       };
-      break;
+      
     case actions.UPDATE_PROJECT_SUCCESS:
       return {
         ...state,
         name: action.project.name,
       };
-      break;
+      
     case actions.UPDATE_PROJECT_PRICE:
       return {
         ...state,
         price: action.price,
       };
-      break;
+      
     case actions.UPDATE_LAST_SAVED_TIME:
       return {
         ...state,
         timeLastSaved: action.time,
       };
-      break;
+      
     default:
       return state;
   }

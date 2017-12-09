@@ -33,25 +33,25 @@ export default function bindToPerimeter(selectedModuleProps, anchorPositions, bo
         x: cd.moduleX,
         y: cd.topLeftAnchorY + cd.boardHeight - cd.moduleHeight,
       };
-      break;
+      
     case 'left':
       return {
         x: cd.topLeftAnchorX + 0.5 * (cd.moduleHeight - cd.moduleWidth),
         y: cd.moduleY,
       };
-      break;
+      
     case 'top':
       return {
         x: cd.moduleX,
         y: cd.topLeftAnchorY,
       };
-      break;
+      
     case 'right':
       return {
         x: cd.topLeftAnchorX + cd.boardWidth - 0.5 * (cd.moduleHeight + cd.moduleWidth),
         y: cd.moduleY,
       };
-      break;
+      
     default:
       return {
         x: cd.moduleX,

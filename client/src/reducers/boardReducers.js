@@ -1,6 +1,5 @@
 import * as actions from 'actions/indexActions';
-
-import { doesModifyBoard } from 'helpers/doesModifyBoard';
+import doesModifyBoard from 'helpers/doesModifyBoard';
 
 const defaultboardSpecs = {
   x: 10,
@@ -20,34 +19,34 @@ export const boardSpecs = (state = defaultboardSpecs, action) => {
         width: action.dimensions.width,
         height: action.dimensions.height,
       };
-      break;
+
     case actions.UPDATE_BOARD_POSITION:
       return {
         ...state,
         x: action.position.x,
         y: action.position.y,
       };
-      break;
+
     case actions.UPDATE_BOARD_STROKE:
       return {
         ...state,
         stroke: action.boardStroke,
       };
-      break;
+
     case actions.UPDATE_BOARD_THUMBNAIL:
       return {
         ...state,
         tempThumbnail: action.thumbnail,
       };
-    break;
+
     case actions.UPDATE_PROJECT_SUCCESS:
       return {
         ...state,
         savedThumbnail: state.tempThumbnail,
       };
-    break;
+
     case actions.FECTCH_PROJECT_BY_ID_SUCCESS:
-      const boardSpecs = action.project.boardSpecs;
+      const { boardSpecs }= action.project;
       const { x, y, width, height, thumbnail } = boardSpecs;
 
       return {
@@ -59,7 +58,7 @@ export const boardSpecs = (state = defaultboardSpecs, action) => {
         tempThumbnail: thumbnail,
         savedThumbnail: thumbnail,
       };
-      break;
+
   }
 
   if (doesModifyBoard(action)) {
@@ -83,11 +82,8 @@ export const anchorPositions = (state = defaultAnchorPositions, action) => {
   switch (action.type) {
     case actions.UPDATE_ANCHOR_POSITIONS:
       return action.positions;
-      break;
-
     case actions.FECTCH_PROJECT_BY_ID_SUCCESS:
       return defaultAnchorPositions;
-      break;
     default:
       return state;
   }

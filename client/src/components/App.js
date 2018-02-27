@@ -19,11 +19,11 @@ export default class App extends Component {
   componentDidMount() {
     // clearJWT();
     // clearUser();
-    const res = getJWT()
-    console.log(res)
-    if (res) {
-      console.log(jwtDecode(res));
-    }
+    // const res = getJWT()
+    // console.log(res)
+    // if (res) {
+    //   console.log(jwtDecode(res));
+    // }
 
     if (doesUserExist()) {
       store.dispatch(handleExistingUserVisit(getJWT()));

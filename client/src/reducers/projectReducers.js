@@ -2,7 +2,7 @@ import * as actions from '../actions/indexActions';
 
 const defaultProjectState = {
   isFetching: false,
-  items: [],
+  items: ['hola'],
 };
 
 export const projects = (state = defaultProjectState, action) => {
@@ -63,4 +63,3 @@ export const currentProjectInfo = (state = defaultProjectInfo, action) => {
       return state;
   }
 };
-

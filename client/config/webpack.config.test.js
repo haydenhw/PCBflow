@@ -14,7 +14,7 @@ module.exports = {
     alias: {
       components: path.join(__dirname, '../src', 'components'),
       actions: path.join(__dirname, '../src', 'actions'),
-      reducers: path.join(__dirname, '../src', 'reducers'),
+      Reducer: path.join(__dirname, '../src', 'Reducer'),
       reduxFiles: path.join(__dirname, '../src', 'redux-files'),
       config: path.join(__dirname, '../src', 'config'),
       helpers: path.join(__dirname, '../src', 'helpers'),

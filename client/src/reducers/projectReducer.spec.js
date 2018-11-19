@@ -5,7 +5,7 @@ import assert from 'assert';
 import deepFreeze from 'deep-freeze';
 
 import * as actions from 'actions/indexActions';
-import { projects, activeProjectInfo } from './projectReducers';
+import { projects, activeProjectInfo } from './projectReducer';
 
 describe('projects reducer', () => {
   it('It should return a list of projects', () => {

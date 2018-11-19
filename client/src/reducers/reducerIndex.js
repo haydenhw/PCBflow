@@ -1,26 +1,19 @@
+import { combineReducers } from 'redux';
 import { undoable } from 'helpers/undoable';
 
-import { combineReducers } from 'redux';
-
-import { anchors } from './anchorReducers';
-import { modules } from './modulesReducers';
-import { entities } from './entitiesReducers';
-import { projects } from './projectReducers';
-import { board } from './boardReducers';
-import { mouseEvents } from './mouseEventReducers';
-import { nav } from './navReducers';
-import { sideBar } from './sideBarReducers';
-import { skipIfImageNodeNull } from './sideBarReducers';
-import { triggers } from './triggersReducers';
-import { tutorial } from './tutorialReducers';
-import { modal } from './modalReducers';
+import { anchors } from './anchorReducer';
+import { modules } from './modulesReducer';
+import { entities } from './entitiesReducer';
+import { projects } from './projectReducer';
+import { mouseEvents } from './mouseEventReducer';
+import { nav } from './navReducer';
+import { sideBar } from './sideBarReducer';
+import { triggers } from './triggersReducer';
+import { tutorial } from './tutorialReducer';
+import { modal } from './modalReducer';
 
 export default combineReducers({
-  // add back skipIfImageNodeNull
-  // entities: undoable(entities, skipIfImageNodeNull),
-
   entities: undoable(entities),
-  // entities,
   anchors,
   modal,
   modules,

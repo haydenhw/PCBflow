@@ -5,7 +5,7 @@ import assert from 'assert';
 import deepFreeze from 'deep-freeze';
 
 import * as actions from 'actions/indexActions';
-import { tutorial } from './tutorialReducers';
+import { tutorial } from './tutorialReducer';
 
 describe('tutorial reducer', () => {
   it('It should toggle isActive', () => {

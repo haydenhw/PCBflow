@@ -5,7 +5,7 @@ import assert from 'assert';
 import deepFreeze from 'deep-freeze';
 
 import * as actions from 'actions/indexActions';
-import { sideBar } from './sideBarReducers';
+import { sideBar } from './sideBarReducer';
 
 describe('sideBar reducer', () => {
   it('It should toggle show bool', () => {

@@ -3,7 +3,7 @@
 import assert from 'assert';
 import deepFreeze from 'deep-freeze';
 
-import { modules } from './moduleReducers';
+import { modules } from './moduleReducer';
 
 describe('modules reducer', () => {
   it('It should return updated draggingModule data', () => {

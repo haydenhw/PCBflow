@@ -2,7 +2,7 @@ import assert from 'assert';
 import deepFreeze from 'deep-freeze';
 
 import * as actions from 'actions/indexActions';
-import { mouseEvents } from './mouseEventReducers';
+import { mouseEvents } from './mouseEventReducer';
 
 describe('mouseEvents reducer', () => {
   it('It should return true if mouse is down on an icon', () => {

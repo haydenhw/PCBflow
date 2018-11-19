@@ -5,7 +5,7 @@ import assert from 'assert';
 import deepFreeze from 'deep-freeze';
 
 import * as actions from 'actions/indexActions';
-import { modal } from './modalReducers';
+import { modal } from './modalReducer';
 
 describe('modal reducer', () => {
     // Fetch Basic Info about User

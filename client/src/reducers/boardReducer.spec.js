@@ -5,7 +5,7 @@ import assert from 'assert';
 import deepFreeze from 'deep-freeze';
 
 import * as actions from 'actions/indexActions';
-import { board, anchors } from './boardReducers';
+import { board, anchors } from './boardReducer';
 
 describe('board reducer', () => {
     // Fetch Basic Info about User

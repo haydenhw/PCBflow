@@ -3,7 +3,7 @@ import { undoable } from 'helpers/undoable';
 
 import { anchors } from './anchorReducer';
 import { modules } from './modulesReducer';
-import { entities } from './entitiesReducer';
+import { entities } from './entityReducer';
 import { projects } from './projectReducer';
 import { mouseEvents } from './mouseEventReducer';
 import { nav } from './navReducer';

@@ -14,3 +14,4 @@ coverage
 .env
 npm-debug.log
 tasks.todo
+client

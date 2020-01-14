@@ -22,14 +22,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
-if (process.env.NODE_ENV === 'production') {
-  // app.use(express.static('client/build'));
-}
-
-app.use(express.static('public'));
-
 app.use(bodyParser.json());
-
 app.use('/auth', authRouter);
 app.use('/projects', projectRouter);
 app.use('/users', userRouter);

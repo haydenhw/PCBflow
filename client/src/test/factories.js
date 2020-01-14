@@ -1,7 +1,6 @@
 import _factory from 'factory-girl';
 import bluebird from 'bluebird';
 import Chance from 'chance';
-
 import Project from '../models/projectsModel';
 import Module from '../models/modulesModel';
 

@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
-
+const cors = require('cors');
 
 const { PORT, DATABASE_URL } = require('./api/config');
 const { Modules, Projects } = require('./api/models');
@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use('/auth', authRouter);
 app.use('/projects', projectRouter);
 app.use('/users', userRouter);
@@ -100,7 +101,7 @@ function tearDownDb() {
   });
 }
 
- //tearDownDb()
+ // tearDownDb()
 
 let server;
 

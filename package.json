@@ -25,6 +25,7 @@
     "babel-preset-env": "^1.7.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
+    "cors": "^2.8.5",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
     "jsonwebtoken": "^8.1.1",
@@ -45,9 +46,10 @@
     "test": "mocha",
     "lint": "eslint --ext .js --ext .jsx client/src/ || exit 0",
     "lint:fix": "eslint --fix --ext .js --ext .jsx client/src/ || exit 0",
-    "build:client": "cd client && npm run build",
-    "push:git": "git add . && git commit -m \"Updates build for deployment\" && git push origin master || exit 0",
-    "push:heroku": "git push heroku master",
-    "deploy": "npm run build:client && npm run push:git && npm run push:heroku"
+    "build:client": "cd client && npm run build && cd ..",
+    "push:git": "git add . && git commit -m $1 && git push origin $(git rev-parse --abbrev-ref HEAD)",
+    "hello:git": "msg=$1; git add . && echo $msg",
+    "test:git": "yarn hello:git $1",
+    "deploy": "git add . && git commit -m $1 && git push origin $(git rev-parse --abbrev-ref HEAD) && ./deploy.sh"
   }
 }

@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: 'pcb-flow',
-    script: 'node.js',
+    script: 'server.js',
 
     // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
     instances: 1,

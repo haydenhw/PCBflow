@@ -13,7 +13,6 @@ module.exports = {
     },
     env_production: {
       NODE_ENV: 'production',
-      "PF_PORT": 4001,
     }
   }],
 

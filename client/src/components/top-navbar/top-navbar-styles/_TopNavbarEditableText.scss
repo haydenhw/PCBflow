@@ -1,0 +1,18 @@
+.editable-project-title {
+  color: white;
+  cursor: pointer;
+  &:focus,
+  &:active {
+    outline: 0;
+  }
+}
+
+.editing {
+  font-family: sans-serif !important;
+  color: black !important;
+  width: 125px;
+}
+
+.editing:focus {
+  outline: 0;
+}

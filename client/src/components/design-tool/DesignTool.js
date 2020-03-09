@@ -337,6 +337,7 @@ let DesignTool = class extends Component {
   }
 
   handleKeyPress(evt) {
+
     const evtobj = window.event ? event : evt;
 
     if (evtobj.keyCode === 90 && evtobj.ctrlKey) {

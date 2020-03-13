@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import TagManager from 'react-gtm-module'
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 
@@ -13,6 +14,10 @@ import LandingPage from 'components/landing-page/LandingPage';
 import './styles/_reset.scss';
 import './styles/index.scss';
 import './styles/icons/style.css'
+
+TagManager.initialize({
+    gtmId: 'GTM-KJWS7WT'
+});
 
 ReactDOM.render(
   <Provider store={store}>
